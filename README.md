@@ -1,3 +1,5 @@
+_🏥🩺 **AI-Medical-Risk-Pattern-Detector** 😷_
+
 In healthcare systems, medical negligence and patient safety risks often arise not from incorrect diagnosis, but from delays, missed follow-ups, and deviations from standard care procedures. These issues are typically identified only after significant harm has occurred, due to the absence of proactive monitoring mechanisms.
 
 Existing healthcare software systems focus primarily on record-keeping and diagnosis support, but lack intelligent tools to analyze treatment timelines and detect early warning signs of care-process risks.
