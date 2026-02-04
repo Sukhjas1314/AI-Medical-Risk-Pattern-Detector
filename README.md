@@ -88,49 +88,66 @@ Web Dashboard (Alerts & Visualization)
 
 ---
 
-## ⚖️ Ethical & Safety Considerations
+## 📋 Patient Event Types
 
-- This system **does NOT diagnose diseases**
-- It **does NOT recommend treatments**
-- Designed strictly as a **clinical safety decision-support tool**
-- Uses **synthetic data** to ensure privacy and compliance
+The system models healthcare activities as time-stamped clinical events.  
+The following event types are used to construct patient treatment timelines:
 
----
+1. Lab Test Ordered  
+2. Lab Test Result  
+3. Diagnosis Recorded  
+4. Treatment Started  
+5. Follow-Up Action  
+6. Patient Discharge
 
-## 🛠️ Tech Stack (Planned)
-
-- **Backend:** Python, FastAPI / Django REST
-- **AI/ML:** Scikit-learn, Pandas, NumPy
-- **Frontend:** HTML, CSS, Bootstrap / React
-- **Database:** SQLite / PostgreSQL
-- **Visualization:** Charts & timeline views
 
 ---
 
-## 🚀 Project Status
+## 🧾 Patient Event Schema
 
-🟡 **In Progress**  
-Currently implementing core modules following a **14-day rapid development plan**.
+Each clinical event is represented using a structured format:
+
+```json
+{
+  "patient_id": "P001",
+  "event_type": "lab_test_result",
+  "event_name": "Blood Sugar",
+  "status": "abnormal",
+  "timestamp": "2026-02-01 10:30",
+  "notes": "High glucose level detected"
+}
+
+```
+---
+
+## 🕒 Patient Timeline Concept
+
+A patient timeline is an ordered sequence of clinical events sorted by time.
+
+### Example Timeline
+
+- **10:30** → Lab Test Result *(Abnormal)*
+- **14:00** → Diagnosis Recorded  
+- ❌ **Missing Follow-Up Test**
+
+### The AI system analyzes:
+- Time gaps between events  
+- Missing expected clinical actions  
+- Abnormal or unsafe event sequences  
+
+The AI system analyzes:
+- Time gaps between events  
+- Missing expected clinical actions  
+- Abnormal or unsafe event sequences
+
 
 ---
 
-## 📌 Future Enhancements
+## ⚠️ Risk Scenarios Detected
 
-- Risk trend analysis over time
-- What-if simulation for delayed actions
-- Role-based dashboards (Doctor / Auditor)
-- Guideline compliance mapping
+The system identifies potential medical risk when:
 
----
-
-## 👤 Author
-
-**Sukhmanpreet Singh**  
-B.Tech Student | AI/ML & Software Engineering  
-Capstone Project (2026)
-
----
-
-## 📜 License
-
-This project is for academic and educational purposes.
+- An abnormal test result is not followed by a required action  
+- Follow-up actions are delayed beyond safe time thresholds  
+- Treatment is initiated significantly later than expected  
+- Clinical events occur in unsafe or unusual sequences  
