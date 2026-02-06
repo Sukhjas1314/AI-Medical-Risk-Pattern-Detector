@@ -150,4 +150,15 @@ The system identifies potential medical risk when:
 - An abnormal test result is not followed by a required action  
 - Follow-up actions are delayed beyond safe time thresholds  
 - Treatment is initiated significantly later than expected  
-- Clinical events occur in unsafe or unusual sequences  
+- Clinical events occur in unsafe or unusual sequences
+
+
+---
+
+## 🧪 Synthetic Data Generation
+
+Due to privacy and ethical considerations, the system uses synthetically generated patient timelines.  
+The data simulates both normal and high-risk care scenarios, enabling safe development and evaluation of the risk detection logic.
+
+
+---
