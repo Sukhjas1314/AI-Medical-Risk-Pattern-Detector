@@ -162,3 +162,10 @@ The data simulates both normal and high-risk care scenarios, enabling safe devel
 
 
 ---
+
+## ⚙️ Care Protocol Rules Engine
+
+The system includes a configurable rule-based engine that evaluates patient timelines against standard care protocols.  
+It detects delayed treatments, missing follow-up actions, and unsafe care deviations, forming the foundation for risk analysis.
+
+---
