@@ -169,3 +169,10 @@ The system includes a configurable rule-based engine that evaluates patient time
 It detects delayed treatments, missing follow-up actions, and unsafe care deviations, forming the foundation for risk analysis.
 
 ---
+
+## 🔢 Risk Scoring & Severity Classification
+
+Detected care deviations are converted into a numerical risk score (0–100) using a weighted scoring mechanism.  
+The system classifies risk into LOW, MEDIUM, or HIGH categories and provides human-readable explanations for each identified risk.
+
+---
