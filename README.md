@@ -176,3 +176,10 @@ Detected care deviations are converted into a numerical risk score (0–100) usi
 The system classifies risk into LOW, MEDIUM, or HIGH categories and provides human-readable explanations for each identified risk.
 
 ---
+
+## 🧾 Explainable AI & Risk Narratives
+
+The system incorporates an explainability layer that translates detected care deviations into clear, human-readable risk narratives.  
+This ensures transparency, ethical use, and supports clinical decision-making without performing diagnosis or treatment recommendations.
+
+---
