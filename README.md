@@ -183,3 +183,11 @@ The system incorporates an explainability layer that translates detected care de
 This ensures transparency, ethical use, and supports clinical decision-making without performing diagnosis or treatment recommendations.
 
 ---
+
+## 📊 Patient Timeline Visualization
+
+The system converts clinical event data into a structured timeline format, highlighting key care events and visually flagging high-risk points.  
+This enables intuitive understanding of patient care progression and supports faster clinical review.
+
+---
+
