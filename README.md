@@ -191,3 +191,18 @@ This enables intuitive understanding of patient care progression and supports fa
 
 ---
 
+## 🌐 API Interface
+
+The system exposes a REST API using FastAPI.
+
+### Endpoint:
+POST /analyze_patient
+
+Returns:
+- Risk score
+- Risk level
+- Detected violations
+- Explainable narratives
+- Structured patient timeline
+
+---
