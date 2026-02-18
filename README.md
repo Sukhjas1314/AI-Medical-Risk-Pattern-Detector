@@ -236,3 +236,13 @@ An Isolation Forest-based anomaly detection model evaluates statistical deviatio
 This complements rule-based reasoning and strengthens the AI-driven nature of the system.
 
 ---
+
+## 🎨 User Interface Enhancements
+
+The frontend includes:
+- Color-coded risk level indicators
+- Structured timeline visualization
+- Ethical disclaimer
+- Clean card-based layout
+
+---
