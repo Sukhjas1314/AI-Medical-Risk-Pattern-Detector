@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AI Medical Risk Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .low {
+            color: green;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .high {
+            color: red;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AI Medical Risk Detector</h1>
+    <div class="card">
+        <label>Enter Patient ID:</label>
+        <input type="text" id="patientId" placeholder="P001" />
+        <button onclick="analyze()">Analyze</button>
+    </div>
+    <div id="results" class="card" style="display:none;">
+        <h2>Risk Analysis</h2>
+        <p><strong>Risk Score : </strong><span id="score"></span></p>
+        <p>
+            <strong>Risk Level:</strong>
+            <span id="level" style="font-weight:bold; font-size:18px;"></span>
+        </p>
+        <h3>Explainable Narratives : </h3>
+        <ul id="explainations"></ul>
+
+        <h3>Timeline : </h3>
+        <ul id="timeline"></ul>
+    </div>
+
+    <script>
+        async function analyze() {
+            const input = document.getElementById("patientId");
+            if (!input) {
+                alert("Input field not found!");
+                return;
+            }
+
+            const patientId = input.value;
+            const response = await fetch(
+                `http://127.0.0.1:8000/analyze_patient?patient_id=${patientId}`,
+                { method: "POST" }
+            );
+
+            const data = await response.json();
+
+            document.getElementById("results").style.display = "block";
+            document.getElementById("score").innerText = data.risk_score;
+
+            const levelSpan = document.getElementById("level");
+            levelSpan.innerText = data.risk_level;
+            levelSpan.className = data.risk_level.toLowerCase();
+
+            const explainationsList = document.getElementById("explainations");
+            explainationsList.innerHTML = "";
+            data.explainations.forEach(e => {
+                const li = document.createElement("li");
+                li.innerText = e;
+                explainationsList.appendChild(li);
+            });
+
+            const timelineList = document.getElementById("timeline");
+            timelineList.innerHTML = "";
+            data.timeline.forEach(t => {
+                const li = document.createElement("li");
+                li.innerText = `${t.time} - ${t.label} (${t.status})`;
+                if (t.risk_flag) {
+                    li.style.color = "red";
+                }
+                timelineList.appendChild(li);
+            });
+            if (data.explanations.length === 0) {
+                explanationsList.innerHTML = "<li>No risk detected. Care protocol followed correctly.</li>";
+            }
+        }
+    </script>
+</body>
+
+</html>
