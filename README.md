@@ -219,3 +219,14 @@ The frontend communicates with the FastAPI backend for real-time analysis.
 
 ---
 
+## 🛡️ Input Validation & Error Handling
+
+The system includes validation mechanisms to:
+- Prevent empty patient ID submissions
+- Handle missing patient data
+- Gracefully manage dataset loading errors
+
+This ensures robustness and production-level reliability.
+
+---
+
