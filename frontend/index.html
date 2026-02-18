@@ -61,6 +61,9 @@
 
         <h3>Timeline : </h3>
         <ul id="timeline"></ul>
+
+        <p><strong>Anomaly Score : </strong> <span id="anomalyScore"></span></p>
+        <p><strong>Anomaly Detected : </strong> <span id="anomalyFlag"></span></p>
     </div>
 
     <script>
@@ -118,6 +121,9 @@
                 alert("Please enter a Patient ID.");
                 return;
             }
+
+            document.getElementById("anomalyScore").innerText = data.anomaly_score;
+            document.getElementById("anomalyFlag").innerText = data.anomaly_detected ? "Yes" : "No";
         }
     </script>
 </body>
