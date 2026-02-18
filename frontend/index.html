@@ -79,6 +79,11 @@
 
             const data = await response.json();
 
+            if (data.error){
+                alert(data.error);
+                return;
+            }
+
             document.getElementById("results").style.display = "block";
             document.getElementById("score").innerText = data.risk_score;
 
@@ -104,8 +109,14 @@
                 }
                 timelineList.appendChild(li);
             });
+
             if (data.explanations.length === 0) {
                 explanationsList.innerHTML = "<li>No risk detected. Care protocol followed correctly.</li>";
+            }
+
+            if (!patientId.trim()){
+                alert("Please enter a Patient ID.");
+                return;
             }
         }
     </script>
