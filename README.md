@@ -206,3 +206,16 @@ Returns:
 - Structured patient timeline
 
 ---
+
+## 🎨 Web Interface
+
+A lightweight frontend interface allows users to input a patient ID and view:
+- Risk score
+- Risk severity
+- Explainable risk narratives
+- Patient treatment timeline
+
+The frontend communicates with the FastAPI backend for real-time analysis.
+
+---
+
