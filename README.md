@@ -230,3 +230,9 @@ This ensures robustness and production-level reliability.
 
 ---
 
+## 🤖 Machine Learning Enhancement
+
+An Isolation Forest-based anomaly detection model evaluates statistical deviations in patient care patterns.  
+This complements rule-based reasoning and strengthens the AI-driven nature of the system.
+
+---
