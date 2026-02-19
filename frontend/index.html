@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Medical Risk Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>AI Medical Risk Detector</h1>
+        <p>AI-Powered Early Medical Negligence & Risk Pattern Detection System</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <label><strong>Enter Patient ID : </strong></label><br><br>
+            <input type="text" id="patientId" placeholder="P001" />
+            <button onclick="analyze()">Analyze</button>
+        </div>
+
+        <div id="results" class="card" style="display:none;">
+
+            <h2>Risk Overview</h2>
+            <p><strong>Risk Score : </strong> <span id="score"></span></p>
+            <p>
+                <strong>Risk Level:</strong>
+                <span id="level" class="risk_badge"></span>
+            </p>
+
+            <hr>
+
+            <h3>Explainable Narratives</h3>
+            <ul id="explainations"></ul>
+
+            <hr>
+
+            <h3>Patient Timeline</h3>
+            <ul id="timeline"></ul>
+
+            <hr>
+
+            <h3>ML Anomaly Detection</h3>
+            <p><strong>Anomaly Score : </strong> <span id="anomalyScore"></span></p>
+            <p><strong>Anomaly Detected : </strong> <span id="anomalyFlag"></span></p>
+
+        </div>
+
+        <div class="footer">
+            This system provides decision-support insights and does not perform medical diagnosis.
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
