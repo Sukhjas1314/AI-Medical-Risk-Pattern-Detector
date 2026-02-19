@@ -252,16 +252,22 @@ The frontend includes:
 The system follows a modular hybrid AI architecture:
 
 User Interface (Frontend)
-      ↓
+
+       ↓
+      
 FastAPI REST Backend
-      ↓
+
+       ↓
+      
 Core Intelligence Engine
  - Care Protocol Rules Engine
  - Risk Scoring Module
  - Explainability Layer
  - Timeline Builder
  - ML Anomaly Detector (Isolation Forest)
-      ↓
+   
+       ↓
+   
 Synthetic Clinical Dataset
 
 ---
