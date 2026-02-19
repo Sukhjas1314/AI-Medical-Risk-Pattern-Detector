@@ -246,3 +246,57 @@ The frontend includes:
 - Clean card-based layout
 
 ---
+
+## 🏗️ System Architecture
+
+The system follows a modular hybrid AI architecture:
+
+User Interface (Frontend)
+        ↓
+FastAPI REST Backend
+        ↓
+Core Intelligence Engine
+        ├── Care Protocol Rules Engine
+        ├── Risk Scoring Module
+        ├── Explainability Layer
+        ├── Timeline Builder
+        └── ML Anomaly Detector (Isolation Forest)
+        ↓
+Synthetic Clinical Dataset
+
+---
+
+## ⚙️ Technical Workflow
+
+1. Patient ID is submitted via frontend.
+2. Backend retrieves corresponding patient timeline.
+3. Care protocol rules are evaluated.
+4. Violations are converted into a weighted risk score.
+5. Explainable narratives are generated.
+6. Timeline is structured for visualization.
+7. ML-based anomaly detection evaluates statistical deviation.
+8. Final risk report is returned to frontend.
+
+---
+
+## 🤖 AI Methodology
+
+The system uses a hybrid intelligence approach:
+
+- Rule-Based Reasoning: Detects protocol deviations and delayed care actions.
+- Weighted Risk Scoring: Converts violations into measurable severity.
+- Explainable AI Layer: Generates human-readable risk narratives.
+- Isolation Forest Model: Detects anomalous care patterns statistically.
+
+This hybrid design ensures interpretability, robustness, and ethical transparency.
+
+---
+
+## ⚖️ Ethical Considerations
+
+- The system does not perform medical diagnosis.
+- It does not recommend treatments.
+- It uses synthetic data to ensure patient privacy.
+- It serves strictly as a clinical decision-support tool.
+
+---
