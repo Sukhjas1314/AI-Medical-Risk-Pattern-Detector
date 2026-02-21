@@ -306,3 +306,24 @@ This hybrid design ensures interpretability, robustness, and ethical transparenc
 - It serves strictly as a clinical decision-support tool.
 
 ---
+## Realistic System Architecture
+
+Event Ingestion API (/add_event)
+
+        ↓
+        
+SQLite Database
+
+        ↓
+        
+Real-Time Monitoring Scheduler
+
+        ↓
+        
+Risk Engine + ML
+
+        ↓
+        
+Alert Log / Dashboard
+
+---
