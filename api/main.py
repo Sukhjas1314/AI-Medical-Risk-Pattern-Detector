@@ -7,6 +7,14 @@ from core.explainability import generate_explainations
 from core.timeline_builder import build_timeline
 from fastapi.middleware.cors import CORSMiddleware
 from core.anomaly_detector import extract_features, detect_anomaly
+from core.database import init_db, get_patient_events
+from core.database import insert_event
+from fastapi_utils.tasks import repeat_every
+import time
+
+init_db()
+
+
 
 app = FastAPI(title = "AI Medical Risk Pattern Detector")
 app.add_middleware(
@@ -17,24 +25,47 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+@repeat_every(seconds=60)
+def monitor_patients():
+    print("Running real-time monitoring...")
+    # In real system: loop through active patients and evaluate risk
+
 
 @app.get("/")
 def home():
     return {"message": "AI Medical Risk Detection API is running."}
 
+@app.post("/add_event")
+def add_event(patient_id: str,
+              event_type: str,
+              event_name: str,
+              status: str,
+              timestamp: str):
+
+    insert_event(patient_id, event_type, event_name, status, timestamp)
+
+    return {"message": "Event added successfully"}
+
 @app.post("/analyze_patient")
 def analyze_patient(patient_id: str):
-    try: 
-        with open("data/patients.json") as f:
-            data = json.load(f)
-    except Exception:
-        return {"error": "Unable to load patient dataset."}
+    # try: 
+    #     with open("data/patients.json") as f:
+    #         data = json.load(f)
+    # except Exception:
+    #     return {"error": "Unable to load patient dataset."}
+
+    # if not patient_id:
+    #     return {"error": "Patient ID is required."}
 
     if not patient_id:
         return {"error": "Patient ID is required."}
 
+    # Fetch events from database instead of JSON
+    timeline = get_patient_events(patient_id)
+
     # Filter patient timeline
-    timeline = [e for e in data if e["patient_id"] == patient_id]
+    # timeline = [e for e in data if e["patient_id"] == patient_id]
     timeline.sort(key = lambda x: x["timestamp"])
 
     if not timeline:
@@ -58,3 +89,4 @@ def analyze_patient(patient_id: str):
         "anomaly_detected": is_anomalous,
         "anomaly_score": anomaly_score
     }
+
