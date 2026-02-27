@@ -54,3 +54,14 @@ def get_patient_events(patient_id):
         }
         for r in rows
     ]
+
+def get_all_patients():
+    conn = sqlite3.connect('patients.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT DISTINCT patient_id FROM events")
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    return [r[0] for r in rows]
