@@ -8,12 +8,11 @@ from core.timeline_builder import build_timeline
 from fastapi.middleware.cors import CORSMiddleware
 from core.anomaly_detector import extract_features, detect_anomaly
 from core.database import init_db, get_patient_events
-from core.database import insert_event
+from core.database import insert_event , get_all_patients
 from fastapi_utils.tasks import repeat_every
 import time
 
 init_db()
-
 
 
 app = FastAPI(title = "AI Medical Risk Pattern Detector")
@@ -30,7 +29,6 @@ app.add_middleware(
 def monitor_patients():
     print("Running real-time monitoring...")
     # In real system: loop through active patients and evaluate risk
-
 
 @app.get("/")
 def home():
@@ -90,3 +88,7 @@ def analyze_patient(patient_id: str):
         "anomaly_score": anomaly_score
     }
 
+@app.get("/patients")
+def list_patients():
+    patients = get_all_patients()
+    return {"patients": patients}
