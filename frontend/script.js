@@ -24,6 +24,14 @@ async function analyze() {
     levelSpan.innerText = data.risk_level;
     levelSpan.className = "risk-badge " + data.risk_level.toLowerCase();
 
+    const alertBanner = document.getElementById("alertBanner");
+    if (data.risk_level === "High"){
+        alertBanner.style.display = "block";
+        alertBanner.innerText = "⚠ HIGH RISK PATIENT — Immediate Attention Required";
+    } else{
+        alertBanner.style.display = "none";
+    }
+
     const explainationsList = document.getElementById("explainations");
     explainationsList.innerHTML = "";
 
@@ -51,6 +59,38 @@ async function analyze() {
         timelineDiv.appendChild(div);
     });
 
+    const hasTreatment = data.timeline.some(t => t.label.includes("Treatment"));
+
+    if (!hasTreatment && data.risk_level !== "LOW"){
+        alertBanner.style.display = "block";
+        alertBanner.innerText = "⏳ Pending Treatment — Risk Escalating"
+    }
+
     document.getElementById("anomalyScore").innerText = data.anomaly_score;
     document.getElementById("anomalyFlag").innerText = data.anomaly_detected ? "Yes" : "No";
 }
+
+async function loadPatients(){
+    const response = await fetch("http://127.0.0.1:8000/patients");
+    const data = await response.json();
+
+    const list = document.getElementById("patientList");
+    list.innerHTML = "";
+
+    data.patients.forEach(p => {
+        const li = document.createElement("li");
+        li.innerText = p;
+        li.style.cursor = "pointer";
+        li.onclick = () =>{
+            document.getElementById("patientId").value = p;
+            analyze();
+        };
+        list.appendChild(li);
+    });
+}
+
+loadPatients();
+
+setInterval(() => {
+    loadPatients();
+}, 10000);
